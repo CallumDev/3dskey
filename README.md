@@ -4,6 +4,7 @@ Use a 3DS as a controller on Linux
 ### Requirements:
 * 3DS capable of running homebrew applications
 * *uinput* kernel module
+* Latest ctrulib from git (current release will not compile this)
 * Mono
 
 ### Usage
