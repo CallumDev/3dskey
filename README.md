@@ -19,3 +19,18 @@ Your user doesn't have the correct permissions to create an input device. Run th
 #### Stuck on "Waiting for connection..."
 1. Make sure you don't have port 19050 UDP and TCP blocked
 
+### Protocol
+1. DSKey.exe listens on UDP port 19050
+2. 3DS sends out a broadcast UDP packet with the contents "ANNOUNCE:3dskey" (15 bytes)
+3. 3DS listens on TCP port 19050
+4. DSKey.exe receives broadcast and connects to the 3DS on TCP port 19050
+5. The 3DS sends the following packets upon state changes:
+
+| Type | Value | Description|
+|------|-------|-----------|
+| int32  | `0xCAFEBABE` | Magic Number |
+| uint32 | `hidKeysDown()` | Keys pressed |
+| uint32 | `hidKeysHeld()` | Keys held |
+| uint32 | `hidKeysUp()` | Keys released |
+| int32 | `hidCircleRead()` x value | X-coordinate of the Circle Pad |
+| int32 | `hidCircleRead()` y value | Y-coordinate of the Circle Pad |
