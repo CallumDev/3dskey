@@ -29,7 +29,7 @@ namespace DSKey
 		};
 
 		const uint BUTTONS_MAGIC = 0xCAFEBABE;
-		const int PORT = 68;
+		const int PORT = 19050;
 		public static int fd;
 
 		static void BroadcastThread()
@@ -44,7 +44,7 @@ namespace DSKey
 			if (!File.Exists ("/dev/uinput"))
 				Failure ("/dev/uinput does not exist. uinput kernel module not loaded?");
 			//Connect to DS
-			var bcaddr = new IPEndPoint(IPAddress.Any, 19050);
+			var bcaddr = new IPEndPoint(IPAddress.Any, PORT);
 			var udpc = new UdpClient ();
 			udpc.Client.Bind (bcaddr);
 			IPEndPoint remoteep = bcaddr;

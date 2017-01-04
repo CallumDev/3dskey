@@ -33,6 +33,7 @@
 #define SOC_ALIGN 0x1000
 #define SOC_BUFFERSIZE 0x100000
 #define SO_BROADCAST 0x4
+#define PORT 19050
 
 static u32 *SOC_buffer = NULL;
 s32 sock = -1, csock = -1;
@@ -79,12 +80,12 @@ int main(int argc, char **argv)
 	memset(&server, 0, sizeof(server));
 	memset(&client, 0, sizeof(client));
 	server.sin_family = AF_INET;
-	server.sin_port = htons(68);
+	server.sin_port = htons(PORT);
 	server.sin_addr.s_addr = gethostid();
 
 	memset(&broadcastaddr, 0, sizeof(broadcastaddr));
 	broadcastaddr.sin_family = AF_INET;
-	broadcastaddr.sin_port = htons(19050);
+	broadcastaddr.sin_port = htons(PORT);
 	inet_pton(AF_INET, "255.255.255.255", &(broadcastaddr.sin_addr));
 
 

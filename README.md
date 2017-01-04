@@ -17,6 +17,5 @@ Use a 3DS as a controller on Linux
 #### /dev/uinput fails to open
 Your user doesn't have the correct permissions to create an input device. Run the program with `sudo`
 #### Stuck on "Waiting for connection..."
-1. Make sure you don't have port 19050 UDP inbound blocked
-2. Make sure you don't have port 68 TCP outbound blocked
+1. Make sure you don't have port 19050 UDP and TCP blocked
 
